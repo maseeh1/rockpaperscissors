@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            font-size: 16px;
+        }
+        button {
+            padding: 16px ;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;  
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button:hover {
+            background-color: #555555;
+            color: white;
+        }
+        span {
+            font-size: 18px;
+        }
+        img {
+            width: 158px;
+            height: 230px;
+        }
+        .imgdiv {
+            float: left;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <h4>
+    You [<span id="playerScore">0</span>] : [<span id="computerScore">0</span>] Computer
+    </h4>
+    <p id="computer"></p>
+    <p id="score"></p>
+    <div id="youid" class="imgdiv" style="display: none;">YOU</div> 
+    <div id="computerid" class="imgdiv" style="display: none;">COMPUTER</div>
+    <br>
+    <div class="imgdiv">
+        <img id="rockImage1" src="rock.jpg" alt="rock" style="display:none;">
+        <img id="scissorsImage1" src="scissors.jpg" alt="scissors" style="display:none;">
+        <img id="paperImage1" src="paper.jpg" alt="paper" style="display:none;">
+    </div>
+    <div class="imgdiv">
+        <img id="rockImage2" src="rock.jpg" alt="rock" style="display:none;">
+        <img id="scissorsImage2" src="scissors.jpg" alt="scissors" style="display:none;">
+        <img id="paperImage2" src="paper.jpg" alt="paper" style="display:none;">
+    </div>
+
+
+    <script>
+        let c = 0;
+        let p = 0;
+        document.getElementById('rock').onclick = function fromRock() {
+            document.getElementById('rockImage1').style.display='block';
+            document.getElementById('paperImage1').style.display='none';
+            document.getElementById('scissorsImage1').style.display='none';
+            document.getElementById('youid').style.display='block';
+            document.getElementById('computerid').style.display='block';
+            var randomNumber= Math.random();
+            if(randomNumber < 0.34) {
+                document.getElementById('computer').innerHTML = "Player: <b>Rock</b> Computer: <b>Rock</b>";
+                document.getElementById('score').innerHTML = "Draw";
+                document.getElementById('rockImage2').style.display='block';
+                document.getElementById('paperImage2').style.display='none';
+                document.getElementById('scissorsImage2').style.display='none';
+            }
+            else if(randomNumber < 0.67) {
+                document.getElementById('computer').innerHTML = "Player: <b>Rock</b> Computer: <b>Paper</b>";
+                document.getElementById('score').innerHTML = "Computer Wins";
+                document.getElementById('rockImage2').style.display='none';
+                document.getElementById('paperImage2').style.display='block';
+                document.getElementById('scissorsImage2').style.display='none';
+            }
+            else {
+                document.getElementById('computer').innerHTML = "Player: <b>Rock</b> Computer: <b>Scissors</b>";
+                document.getElementById('score').innerHTML = "You Win";
+                document.getElementById('rockImage2').style.display='none';
+                document.getElementById('paperImage2').style.display='none';
+                document.getElementById('scissorsImage2').style.display='block';
+            }
+            for(k=1; document.getElementById('score').innerHTML === "You Win"; k++) {
+            p += k;
+            break;
+            }
+            for(k=1; document.getElementById('score').innerHTML === "Computer Wins"; k++) {
+            c += k;
+            break;
+            }
+                document.getElementById('playerScore').innerHTML = p;
+                document.getElementById('computerScore').innerHTML = c;
+        }
+        document.getElementById('paper').onclick = function fromPaper() {
+            document.getElementById('rockImage1').style.display='none';
+            document.getElementById('paperImage1').style.display='block';
+            document.getElementById('scissorsImage1').style.display='none';
+            document.getElementById('youid').style.display='block';
+            document.getElementById('computerid').style.display='block';
+            var randomNumber= Math.random();
+            if(randomNumber < 0.34) {
+                document.getElementById('computer').innerHTML = "Player: <b>Paper</b> Computer: <b>Rock</b>";
+                document.getElementById('score').innerHTML = "You Win";
+                document.getElementById('rockImage2').style.display='block';
+                document.getElementById('paperImage2').style.display='none';
+                document.getElementById('scissorsImage2').style.display='none';
+            }
+            else if(randomNumber < 0.67) {
+                document.getElementById('computer').innerHTML = "Player: <b>Paper</b> Computer: <b>Paper</b>";
+                document.getElementById('score').innerHTML = "Draw";
+                document.getElementById('rockImage2').style.display='none';
+                document.getElementById('paperImage2').style.display='block';
+                document.getElementById('scissorsImage2').style.display='none';
+            }
+            else {
+                document.getElementById('computer').innerHTML = "Player: <b>Paper</b> Computer: <b>Scissors</b>";
+                document.getElementById('score').innerHTML = "Computer Wins";
+                document.getElementById('rockImage2').style.display='none';
+                document.getElementById('paperImage2').style.display='none';
+                document.getElementById('scissorsImage2').style.display='block';
+            }
+            for(k=1; document.getElementById('score').innerHTML === "You Win"; k++) {
+            p += k;
+            break;
+            }
+            for(n=1; document.getElementById('score').innerHTML === "Computer Wins"; n++) {
+            c += n;
+            break;
+            }
+                document.getElementById('playerScore').innerHTML = p;
+                document.getElementById('computerScore').innerHTML = c;
+
+        }
+        document.getElementById('scissors').onclick = function fromScissors() {
+            document.getElementById('rockImage1').style.display='none';
+            document.getElementById('paperImage1').style.display='none';
+            document.getElementById('scissorsImage1').style.display='block';
+            document.getElementById('youid').style.display='block';
+            document.getElementById('computerid').style.display='block';
+            var randomNumber= Math.random();
+            if(randomNumber < 0.34) {
+                document.getElementById('computer').innerHTML = "Player: <b>Scissors</b> Computer: <b>Rock</b>";
+                document.getElementById('score').innerHTML = "Computer Wins";
+                document.getElementById('rockImage2').style.display='block';
+                document.getElementById('paperImage2').style.display='none';
+                document.getElementById('scissorsImage2').style.display='none';
+            }
+            else if(randomNumber < 0.67) {
+                document.getElementById('computer').innerHTML = "Player: <b>Scissors</b> Computer: <b>Paper</b>";
+                document.getElementById('score').innerHTML = "You Win";
+                document.getElementById('rockImage2').style.display='none';
+                document.getElementById('paperImage2').style.display='block';
+                document.getElementById('scissorsImage2').style.display='none';
+            }
+            else {
+                document.getElementById('computer').innerHTML = "Player: <b>Scissors</b> Computer: <b>Scissors</b>";
+                document.getElementById('score').innerHTML = "Draw";
+                document.getElementById('rockImage2').style.display='none';
+                document.getElementById('paperImage2').style.display='none';
+                document.getElementById('scissorsImage2').style.display='block';
+            }
+            for(k=1; document.getElementById('score').innerHTML === "You Win"; k++) {
+            p += k;
+            break;
+            }
+            for(m=1; document.getElementById('score').innerHTML === "Computer Wins"; m++) {
+            c += m;
+            break;
+            }
+                document.getElementById('playerScore').innerHTML = p;
+                document.getElementById('computerScore').innerHTML = c;
+
+        }
+
+    </script>
+</body>
+</html>
